@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Home Page </title>
+  </head>
+  <body>
+
+    <h1> welcome to call and messaging app </h1>
+    
+
+    <h2> Type your message here</h2>
+    <form action="/message" method="post">
+      <label for="message">Enter your message to send </label>
+      <input
+        id="message"
+        type="text"
+        name="message"
+        />
+        <br/>
+      
+      <label for="PhoneNumber_from" method="post"> From Phone Number</label>
+      <input id="PhoneNumber_from" type="number" name= "PhoneNumber_from"/>
+        <br/>
+      <label for="PhoneNumber_to" method="post"> To Phone Number</label>
+      <input id="PhoneNumber_to" type="number" name= "PhoneNumber_to"/>
+
+      <br/>
+      <input type="submit" value="submit" />
+    </form>
+    
+    
+  </body>
+</html>
