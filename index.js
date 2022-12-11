@@ -31,10 +31,6 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, "./home.html"))
 })
 
-// storing message in variable
-var message;
-var phoneNumberFrom;
-var phoneNumberTo;
 
 
 // Send user to WebPage
@@ -42,17 +38,6 @@ app.post('/message', (req,res,next) => {
   message = req.body.message
   phoneNumberFrom = req.body.PhoneNumber_from
   phoneNumberTo = req.body.PhoneNumber_to
-  //--------------------------------------------------
-
-
-  client.messages
-    .create({
-      body: message,
-      from: '+' + phoneNumberFrom,
-      to: '+' + phoneNumberTo,
-    }).then(message => console.log(message.sid)).then(res.send("message has been send "));
- 
-});
 
 
 app.listen(credential.PORT, () => {
