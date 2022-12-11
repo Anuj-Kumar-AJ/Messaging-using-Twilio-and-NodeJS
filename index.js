@@ -5,8 +5,6 @@ bodyParser = require('body-parser')
 path = require('path')
 
 
-
-
 // importing credential module
 credential = require('./credential')
 
@@ -17,9 +15,7 @@ const client = require('twilio')(accountSid, authToken);
 //-------------------------------------------------------------
 
 
-// express
-
-
+// creating express instance
 
 app = express()
 
@@ -36,24 +32,13 @@ app.get('/', (req,res) => {
 })
 
 
+
+// Send user to WebPage
 app.post('/message', (req,res,next) => {
   message = req.body.message
   phoneNumberFrom = req.body.PhoneNumber_from
   phoneNumberTo = req.body.PhoneNumber_to
-  
-  res.send("Data has been Receved")
-  next()
-});
 
-
-// twilio message initiated
-
-client.messages
-  .create({
-     body: "MESSAGE_CONTENT",
-     from: "Your Twilio Phone number",
-     to: 'Receiver Phone number',
-   }).then(message => console.log(message.sid));
 
 app.listen(credential.PORT, () => {
     console.log('listening to port ' + credential.PORT)
