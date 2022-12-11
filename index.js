@@ -35,10 +35,6 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, "./home.html"))
 })
 
-// storing message in variable
-var message;
-var phoneNumberFrom;
-var phoneNumberTo;
 
 app.post('/message', (req,res,next) => {
   message = req.body.message
@@ -50,11 +46,14 @@ app.post('/message', (req,res,next) => {
 });
 
 
+// twilio message initiated
 
-
-
-
-  .then(message => console.log(message.sid));
+client.messages
+  .create({
+     body: "MESSAGE_CONTENT",
+     from: "Your Twilio Phone number",
+     to: 'Receiver Phone number',
+   }).then(message => console.log(message.sid));
 
 app.listen(credential.PORT, () => {
     console.log('listening to port ' + credential.PORT)
